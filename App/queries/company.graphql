@@ -1,0 +1,22 @@
+query company($id: ID!) {
+  company(id: $id) {
+    id
+    name
+    types {
+      id
+      code
+      name
+    }
+    admin {
+      fullName
+      email
+    }
+    contactPhone
+    billingEmail
+    billingAddressOne
+    billingAddressTwo
+    billingCity
+    billingPostcode
+    passedReportsForCurrentMonth
+  }
+}

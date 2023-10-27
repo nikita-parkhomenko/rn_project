@@ -1,0 +1,170 @@
+fragment Door on Door {
+  id
+  projectReference
+  doorReference
+  tagId
+  leaf1AccousticRating
+  leaf1CoreSupplier
+  leaf1Width
+  leaf1Height
+  leaf2AccousticRating
+  leaf2CoreSupplier
+  leaf2Width
+  leaf2Height
+  fdRating {
+    id
+    value
+  }
+  documents {
+    id
+    originalFilename
+    description
+    documentType {
+      id
+      code
+      name
+    }
+  }
+  model {
+    ...DoorModel
+    documents {
+      id
+      originalFilename
+      description
+      documentType {
+        id
+        code
+        name
+      }
+    }
+  }
+  doorParts {
+    lockLatch
+    hinges
+    closer
+    spyhole
+    letterbox
+    thresholdStrip
+    dropSeal
+    handles
+    smokeSeals
+    cylinder
+    intumescentStrip
+    keeps
+    numerals
+    chain
+    weatherSeals
+    additionalComments
+  }
+  status {
+    name
+    code
+  }
+  site {
+    id
+    name
+  }
+  location
+}
+
+query door($id: ID!) {
+  door(id: $id) {
+    ...Door
+  }
+}
+
+query doorByTagId($tagId: String!) {
+  doorByTagId(tagId: $tagId) {
+    ...Door
+  }
+}
+
+query doors(
+  $skip: Int
+  $take: Int
+  $sortField: String
+  $sortDirection: String
+  $active: Boolean
+  $tagged: Boolean
+  $statuses: [String!]
+) {
+  doors(
+    skip: $skip
+    take: $take
+    sortField: $sortField
+    sortDirection: $sortDirection
+    active: $active
+    tagged: $tagged
+    statuses: $statuses
+  ) {
+    items {
+      id
+      doorReference
+      projectReference
+      status {
+        name
+        code
+      }
+    }
+    total
+    hasMore
+  }
+}
+
+fragment DoorHeader on Door {
+  id
+  doorReference
+  projectReference
+  status {
+    name
+    code
+  }
+  site {
+    id
+    name
+  }
+  location
+}
+
+query doorInstallationsInProgress(
+  $skip: Int
+  $take: Int
+  $sortField: String
+  $sortDirection: String
+  $active: Boolean
+  $statuses: [String!]
+  $tagged: Boolean
+  $excludeTransferred: Boolean
+) {
+  doors(
+    skip: $skip
+    take: $take
+    sortField: $sortField
+    sortDirection: $sortDirection
+    active: $active
+    statuses: $statuses
+    tagged: $tagged
+    excludeTransferred: $excludeTransferred
+  ) {
+    items {
+      ...DoorHeader
+    }
+    total
+    hasMore
+  }
+}
+
+mutation assignDoorTag($id: ID!, $tag: String!) {
+  assignDoorTag(id: $id, tag: $tag) {
+    id
+    tagId
+  }
+}
+
+mutation startInstallation($doorId: ID!, $siteId: ID!, $location: String!) {
+  startInstallation(doorId: $doorId, siteId: $siteId, location: $location)
+}
+
+mutation startInspection($doorId: ID!) {
+  startInspection(doorId: $doorId)
+}

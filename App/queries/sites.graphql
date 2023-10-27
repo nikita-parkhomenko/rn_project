@@ -1,0 +1,6 @@
+query sitesByName($name: String!) {
+  sitesByName(name: $name) {
+    id
+    name
+  }
+}

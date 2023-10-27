@@ -1,0 +1,8 @@
+query checklistQuestions($code: String!) {
+  checklistQuestions(code: $code) {
+    id
+    name
+    code
+  }
+}
+

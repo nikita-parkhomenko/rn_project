@@ -1,0 +1,6 @@
+query failureRisks {
+  failureRisks {
+    id
+    name
+  }
+}

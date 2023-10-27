@@ -1,0 +1,17 @@
+query checklistAnswersByInstallationId($installationId: Float!) {
+  checklistAnswersByInstallationId(installationId: $installationId) {
+    answer
+    installationId
+    checklistQuestion
+    {
+      id
+      name
+      code
+    }
+    documents
+    {
+      documentId
+      photoKey
+    }
+  }
+}

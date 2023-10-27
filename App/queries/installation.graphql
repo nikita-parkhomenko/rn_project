@@ -1,0 +1,18 @@
+query installationsByDoorId($doorId: ID!) {
+  installationsByDoorId(doorId: $doorId) {
+    id
+    isSignedOff
+  }
+}
+
+mutation installDoor($checklist: InstallDoorInput!) {
+  installDoor(checklist: $checklist)
+}
+
+mutation signOffInstallation($doorId: ID!, $isSuccess: Boolean!, $message: String!) {
+  signOffInstallation(doorId: $doorId, isSuccess: $isSuccess, message: $message)
+}
+
+mutation cancelInstallations($idListInput: IdListInput!) {
+  cancelInstallations(idListInput: $idListInput)
+}

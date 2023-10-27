@@ -1,0 +1,28 @@
+fragment DoorModelParts on DoorModelParts {
+  id
+  lockLatch
+  closer
+  intumescentStrip
+  hinges
+  handles
+  smokeSeals
+  dropSeal
+  cylinder
+  letterbox
+  spyhole
+  thresholdStrip
+  additionalComments
+}
+
+fragment DoorModel on DoorModel {
+  id
+  name
+  coreSupplier
+  fdRating {
+    id
+    value
+  }
+  doorModelParts {
+    ...DoorModelParts
+  }
+}

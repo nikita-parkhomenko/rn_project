@@ -1,0 +1,6 @@
+query fireStoppingTypes {
+  fireStoppingTypes {
+    id
+    name
+  }
+}

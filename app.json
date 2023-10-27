@@ -1,0 +1,13 @@
+{
+  "name": "DDSMobile",
+  "displayName": "DDSMobile",
+  "expo": {
+    "name": "DDSMobile",
+    "slug": "dds-mobile",
+    "version": "0.0.1",
+    "assetBundlePatterns": ["**/*"],
+    "android": {
+      "softwareKeyboardLayoutMode": "pan"
+    }
+  }
+}

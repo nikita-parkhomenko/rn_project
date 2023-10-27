@@ -1,0 +1,15 @@
+query LoggedIn {
+  loggedIn {
+    id
+    fullName
+    email
+    company {
+      id
+      name
+    }
+    roles {
+      code
+      name
+    }
+  }
+}

@@ -1,0 +1,22 @@
+#query inspectionsByDoorId($doorId: ID!) {
+#  inspectionByDoorId(doorId: $doorId) {
+#    id
+#    isSignedOff
+#  }
+#}
+
+mutation inspectDoor($checklist: InspectDoorInput!) {
+  inspectDoor(checklist: $checklist)
+}
+
+mutation signOffInspection($doorId: ID!, $isSuccess: Boolean!, $message: String!, $failureRiskId: ID) {
+  signOffInspection(doorId: $doorId, isSuccess: $isSuccess, message: $message, failureRiskId: $failureRiskId)
+}
+
+mutation cancelInspections($idListInput: IdListInput!) {
+  cancelInspections(idListInput: $idListInput)
+}
+
+mutation recordDoorNotAccessible($details: RecordDoorNotAccessibleInput!) {
+  recordDoorNotAccessible(details: $details)
+}
